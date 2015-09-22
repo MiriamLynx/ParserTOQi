@@ -1621,17 +1621,23 @@ public class Main extends JFrame {
 				if (!split[i].contains("2.A.2. DIRECCIÓN DE TESIS DOCTORALES")) {
 					if (split[i].contains("DENOMINACIÓN")) {
 						String[] subSplit = split[i].split(": ");
-						cadena += subSplit[1];
+						if (subSplit.length > 1) {
+							cadena += subSplit[1];
+						}
 					}
 					if (split[i].contains("DEPARTAMENTO")) {
 						cadena += " en el departamento de ";
 						String[] subSplit = split[i].split(": ");
-						cadena += subSplit[1];
+						if (subSplit.length > 1) {
+							cadena += subSplit[1];
+						}
 					}
 					if (split[i].contains("INSTITUCIÓN")) {
 						cadena += " en la ";
 						String[] subSplit = split[i].split(": ");
-						cadena += subSplit[1];
+						if (subSplit.length > 1) {
+							cadena += subSplit[1];
+						}
 						map.get("PUESTO").add(formatString(cadena));
 						cadena = "";
 					}
@@ -2034,7 +2040,9 @@ public class Main extends JFrame {
 				if (!split[i].contains("2.C.4.OTROS MÉRITOS RELACIONADOS")) {
 					if (split[i].contains("INSTITUCIÓN:")) {
 						String[] text = split[i].split(": ");
-						cadena += text[text.length - 1];
+						if (text.length > 0) {
+							cadena += text[text.length - 1];
+						}
 						if (!split[i - 1].contains("CENTRO")) {
 							cadena += split[i - 1] + " ";
 						}
@@ -2532,7 +2540,9 @@ public class Main extends JFrame {
 				if (!split[i].contains("4.B. DESEMPEÑO DE PUESTOS")) {
 					if (split[i].contains("DENOMINACIÓN:")) {
 						String[] text = split[i].split(": ");
-						cadena += text[text.length - 1];
+						if (text.length > 0) {
+							cadena += text[text.length - 1];
+						}
 						for (int x = 1; i + x < split.length; x++) {
 							if (!split[i + x].contains("ACTIVIDAD:")) {
 								cadena += split[i + x] + " ";
@@ -2570,7 +2580,9 @@ public class Main extends JFrame {
 				if (!split[i].contains("4.C. OTROS MÉRITOS")) {
 					if (split[i].contains("DENOMINACIÓN:")) {
 						String[] text = split[i].split(": ");
-						cadena += text[text.length - 1];
+						if (text.length > 0) {
+							cadena += text[text.length - 1];
+						}
 						for (int x = 1; i + x < split.length; x++) {
 							if (!split[i + x].contains("ACTIVIDAD:")) {
 								cadena += split[i + x] + " ";
